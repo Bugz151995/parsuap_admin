@@ -9,7 +9,7 @@ class Archive extends BaseController
     echo view('templates/header');
     echo view('templates/topnavbar');
     echo view('templates/sidenavbar');
-    echo view('archive');
+    echo view('Archive/index');
     echo view('templates/footer');
   }
 }

@@ -9,7 +9,7 @@ class Announcement extends BaseController
     echo view('templates/header');
     echo view('templates/topnavbar');
     echo view('templates/sidenavbar');
-    echo view('announcements');
+    echo view('Announcement/index');
     echo view('templates/footer');
   }
 }

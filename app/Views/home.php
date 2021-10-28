@@ -13,59 +13,59 @@
 						</div>
 					</div>
 				</div>
-					<div class="page-title-actions">
-						<button type="button" data-toggle="tooltip" title="Example Tooltip" data-placement="bottom" class="btn-shadow mr-3 btn btn-dark">
-							<i class="fa fa-star"></i>
+				<div class="page-title-actions">
+					<button type="button" data-toggle="tooltip" title="Example Tooltip" data-placement="bottom" class="btn-shadow mr-3 btn btn-dark">
+						<i class="fa fa-star"></i>
+					</button>
+					<div class="d-inline-block dropdown">
+						<button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn-shadow dropdown-toggle btn btn-info">
+							<span class="btn-icon-wrapper pr-2 opacity-7">
+								<i class="fa fa-business-time fa-w-20"></i>
+							</span>
+							Buttons
 						</button>
-							<div class="d-inline-block dropdown">
-								<button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn-shadow dropdown-toggle btn btn-info">
-									<span class="btn-icon-wrapper pr-2 opacity-7">
-										<i class="fa fa-business-time fa-w-20"></i>
-									</span>
-									Buttons
-								</button>
-									<div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-											<ul class="nav flex-column">
-													<li class="nav-item">
-															<a href="javascript:void(0);" class="nav-link">
-																	<i class="nav-link-icon lnr-inbox"></i>
-																	<span>
-																			Inbox
-																	</span>
-																	<div class="ml-auto badge badge-pill badge-secondary">86</div>
-															</a>
-													</li>
-													<li class="nav-item">
-															<a href="javascript:void(0);" class="nav-link">
-																	<i class="nav-link-icon lnr-book"></i>
-																	<span>
-																			Book
-																	</span>
-																	<div class="ml-auto badge badge-pill badge-danger">5</div>
-															</a>
-													</li>
-													<li class="nav-item">
-															<a href="javascript:void(0);" class="nav-link">
-																	<i class="nav-link-icon lnr-picture"></i>
-																	<span>
-																			Picture
-																	</span>
-															</a>
-													</li>
-													<li class="nav-item">
-															<a disabled href="javascript:void(0);" class="nav-link disabled">
-																	<i class="nav-link-icon lnr-file-empty"></i>
-																	<span>
-																			File Disabled
-																	</span>
-															</a>
-													</li>
-											</ul>
-									</div>
-							</div>
-					</div>    
+						<div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+							<ul class="nav flex-column">
+								<li class="nav-item">
+									<a href="javascript:void(0);" class="nav-link">
+										<i class="nav-link-icon lnr-inbox"></i>
+										<span>
+											Inbox
+										</span>
+										<div class="ml-auto badge badge-pill badge-secondary">86</div>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="javascript:void(0);" class="nav-link">
+										<i class="nav-link-icon lnr-book"></i>
+										<span>
+											Book
+										</span>
+										<div class="ml-auto badge badge-pill badge-danger">5</div>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="javascript:void(0);" class="nav-link">
+										<i class="nav-link-icon lnr-picture"></i>
+										<span>
+											Picture
+										</span>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a disabled href="javascript:void(0);" class="nav-link disabled">
+										<i class="nav-link-icon lnr-file-empty"></i>
+										<span>
+											File Disabled
+										</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
 			</div>
-		</div>    
+		</div>
 
 		<div class="row justify-content-center">
 			<div class="col-md-6 col-xl-4">
@@ -118,7 +118,7 @@
 					<div class="card-header-tab card-header-tab-animation card-header">
 						<div class="card-header-title">
 							<i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i>
-							Sales Report
+							Sample Report
 						</div>
 						<ul class="nav">
 							<li class="nav-item"><a href="javascript:void(0);" class="active nav-link">Last</a></li>
@@ -154,7 +154,7 @@
 																<small class="opacity-5 pr-1">$</small>
 																<span>129</span>
 																<small class="text-danger pl-2">
-																		<i class="fa fa-angle-down"></i>
+																	<i class="fa fa-angle-down"></i>
 																</small>
 															</div>
 														</div>
@@ -176,7 +176,7 @@
 																<small class="opacity-5 pr-1">$</small>
 																<span>54</span>
 																<small class="text-success pl-2">
-																		<i class="fa fa-angle-up"></i>
+																	<i class="fa fa-angle-up"></i>
 																</small>
 															</div>
 														</div>
@@ -191,13 +191,13 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="col-md-12 col-lg-6">
 				<div class="mb-3 card">
 					<div class="card-header-tab card-header">
 						<div class="card-header-title">
 							<i class="header-icon lnr-rocket icon-gradient bg-tempting-azure"> </i>
-								Bandwidth Reports
+							Sample Reports
 						</div>
 						<div class="btn-actions-pane-right">
 							<div class="nav">
@@ -214,9 +214,9 @@
 								</div>
 								<div class="widget-chart-content text-center mt-5">
 									<div class="widget-description mt-0 text-warning">
-											<i class="fa fa-arrow-left"></i>
-											<span class="pl-1">175.5%</span>
-											<span class="text-muted opacity-8 pl-1">increased server resources</span>
+										<i class="fa fa-arrow-left"></i>
+										<span class="pl-1">175.5%</span>
+										<span class="text-muted opacity-8 pl-1">increased server resources</span>
 									</div>
 								</div>
 							</div>
@@ -322,7 +322,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="col-md-6 col-xl-4">
 				<div class="card mb-3 widget-content">
 					<div class="widget-content-outer">
@@ -370,13 +370,13 @@
 					<div class="table-responsive">
 						<table class="align-middle mb-0 table table-borderless table-striped table-hover">
 							<thead>
-							<tr>
-								<th class="text-center">#</th>
-								<th>Name</th>
-								<th class="text-center">City</th>
-								<th class="text-center">Status</th>
-								<th class="text-center">Actions</th>
-							</tr>
+								<tr>
+									<th class="text-center">#</th>
+									<th>Name</th>
+									<th class="text-center">City</th>
+									<th class="text-center">Status</th>
+									<th class="text-center">Actions</th>
+								</tr>
 							</thead>
 							<tbody>
 								<tr>
@@ -430,7 +430,7 @@
 										<button type="button" id="PopoverCustomT-2" class="btn btn-primary btn-sm">Details</button>
 									</td>
 								</tr>
-								
+
 								<tr>
 									<td class="text-center text-muted">#321</td>
 									<td>
@@ -485,7 +485,7 @@
 							</tbody>
 						</table>
 					</div>
-					
+
 					<div class="d-block text-center card-footer">
 						<button class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button>
 						<button class="btn-wide btn btn-success">Save</button>
@@ -502,12 +502,12 @@
 					<ul class="nav">
 						<li class="nav-item">
 							<a href="javascript:void(0);" class="nav-link">
-									Footer Link 1
+								Footer Link 1
 							</a>
 						</li>
 						<li class="nav-item">
 							<a href="javascript:void(0);" class="nav-link">
-									Footer Link 2
+								Footer Link 2
 							</a>
 						</li>
 					</ul>
@@ -516,7 +516,7 @@
 					<ul class="nav">
 						<li class="nav-item">
 							<a href="javascript:void(0);" class="nav-link">
-									Footer Link 3
+								Footer Link 3
 							</a>
 						</li>
 						<li class="nav-item">
@@ -524,12 +524,12 @@
 								<div class="badge badge-success mr-1 ml-0">
 									<small>NEW</small>
 								</div>
-									Footer Link 4
+								Footer Link 4
 							</a>
 						</li>
 					</ul>
 				</div>
 			</div>
 		</div>
-	</div>    
+	</div>
 </div>

@@ -9,7 +9,7 @@ class Career extends BaseController
     echo view('templates/header');
     echo view('templates/topnavbar');
     echo view('templates/sidenavbar');
-    echo view('careers');
+    echo view('Career/index');
     echo view('templates/footer');
   }
 }

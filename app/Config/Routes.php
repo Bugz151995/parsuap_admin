@@ -35,8 +35,22 @@ $routes->get('/', 'Home::index');
 $routes->get('announcements', 'Announcement::index');
 $routes->get('careers', 'Career::index');
 $routes->get('events', 'Event::index');
-$routes->get('request', 'Request::index');
-$routes->get('users', 'Alumni::index');
+
+$routes->group('request', function($routes) {
+    $routes->get('/', 'Request::index');
+    $routes->post('confirm', 'Request::confirm');
+    $routes->post('approve', 'Request::approve');
+    $routes->post('delete', 'Request::delete');
+});
+
+$routes->group('users', function($routes) {
+    $routes->get('/', 'Alumni::index');
+    $routes->post('confirm', 'Alumni::confirm');
+    $routes->post('approve', 'Alumni::approve');
+    $routes->post('block', 'Alumni::block');
+    $routes->post('delete', 'Alumni::delete');
+});
+
 $routes->get('archives', 'Archive::index');
 $routes->get('threads', 'Forum::index');
 

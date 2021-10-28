@@ -9,7 +9,7 @@ class Forum extends BaseController
     echo view('templates/header');
     echo view('templates/topnavbar');
     echo view('templates/sidenavbar');
-    echo view('forum');
+    echo view('Forum/index');
     echo view('templates/footer');
   }
 }
