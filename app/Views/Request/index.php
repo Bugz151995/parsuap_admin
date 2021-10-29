@@ -68,9 +68,30 @@
 		</div>
 
 		<!-- PAGINATION -->
-		<div class="row">
+		<div class="row justify-content-between">
 			<div class="col-auto">
 				<?= $pager->links() ?>
+			</div>
+			<div class="col-auto pb-3">
+				<div class="d-flex">
+					<a href="<?= site_url()?>request" class="btn pb-0 btn-focus rounded-pill px-3 mr-3">
+						<span class="align-middle">
+							<i class="fa fa-fw" aria-hidden="true"></i>
+							Refresh List
+						</span>
+					</a>
+					<?= form_open('request/s') ?>
+					<?= csrf_field() ?>
+					<div class="input-group rounded-pill bg-white shadow-sm">
+						<input placeholder="Search Name..." name="s" type="text" class="form-control rounded-pill border-0 px-4">
+						<span class="input-group-text rounded-pill border-0 bg-primary">
+							<button type="submit" class="btn p-0 text-light">
+							<i class="fas fa-search"></i>
+							</button>
+						</span>
+					</div>
+					<?= form_close() ?>
+				</div>
 			</div>
 		</div>
 
@@ -86,7 +107,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="table">
+					<div class="table-responsive">
 						<table class="align-middle mb-0 table table-borderless table-striped table-hover">
 							<thead>
 								<tr>
@@ -152,7 +173,7 @@
 										</td>
 
 										<td class="text-center">
-											<div class="dropleft btn-group">
+											<div class="dropup btn-group">
 												<button type="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" class="dropdown-toggle-split dropdown-toggle btn btn-sm btn-primary"><span class="sr-only">Toggle Dropdown</span></button>
 												<div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu p-0">
 														<?= form_open('request/confirm', ['class' => 'dropdown-item p-0']) ?>

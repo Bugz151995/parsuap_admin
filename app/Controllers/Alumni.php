@@ -165,4 +165,41 @@ class Alumni extends BaseController
     session()->setTempData('info', 'The User has been successfully deleted!', 1);
     return redirect()->to('users');
   }
+
+  
+  /**
+   * Search a specific User.
+   *
+   * @return mixed
+   */
+  public function search()
+  {
+    $validation =  \Config\Services::validation();
+
+    if(!$this->validate($validation->getRuleGroup('search_rule'))){
+      session()->setTempData('warning', 'Please input the name that you want to search before you click the search button.', 1);
+      return redirect()->to('users');
+    } else {
+      helper('form');
+      $alumni = new AlumniModel();
+      $batch  = new BatchModel();
+      $search = [
+        'fname' => esc($this->request->getPost('s')),
+        'lname' => esc($this->request->getPost('s'))
+      ];
+  
+      $data = [
+        'alumni'  => $alumni->searchUser($search)->paginate(15),
+        'a_batch' => $batch->findAll(),
+        'pager'   => $alumni->pager
+      ];
+  
+      session()->setTempData('info', 'The System has found '.count($data['alumni']).' data!', 1);
+      echo view('templates/header', $data);
+      echo view('templates/topnavbar');
+      echo view('templates/sidenavbar');
+      echo view('Alumni/index');
+      echo view('templates/footer');
+    }
+  }
 }

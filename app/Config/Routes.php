@@ -41,6 +41,7 @@ $routes->group('request', function($routes) {
     $routes->post('confirm', 'Request::confirm');
     $routes->post('approve', 'Request::approve');
     $routes->post('delete', 'Request::delete');
+    $routes->post('s', 'Request::search');
 });
 
 $routes->group('users', function($routes) {
@@ -49,10 +50,19 @@ $routes->group('users', function($routes) {
     $routes->post('approve', 'Alumni::approve');
     $routes->post('block', 'Alumni::block');
     $routes->post('delete', 'Alumni::delete');
+    $routes->post('s', 'Alumni::search');
+});
+
+$routes->group('threads', function($routes) {
+    $routes->get('/', 'Forum::index');
+    $routes->post('confirm', 'Forum::confirm');
+    $routes->post('close', 'Forum::close');
+    $routes->post('delete', 'Forum::delete');
+    $routes->post('v', 'Forum::view');
+    $routes->post('s', 'Forum::search');
 });
 
 $routes->get('archives', 'Archive::index');
-$routes->get('threads', 'Forum::index');
 
 /*
  * --------------------------------------------------------------------

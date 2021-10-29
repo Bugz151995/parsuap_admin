@@ -109,7 +109,7 @@ class Request extends BaseController
   }
 
   /**
-   * Approve the User.
+   * Delete the User.
    *
    * @return mixed
    */
@@ -124,5 +124,41 @@ class Request extends BaseController
     $alumni->delete($data);
     session()->setTempData('info', 'The User has been successfully deleted!', 1);
     return redirect()->to('request');
+  }
+
+  /**
+   * Delete the User.
+   *
+   * @return mixed
+   */
+  public function search()
+  {
+    $validation =  \Config\Services::validation();
+
+    if(!$this->validate($validation->getRuleGroup('search_rule'))){
+      session()->setTempData('warning', 'Please input the name that you want to search before you click the search button.', 1);
+      return redirect()->to('request');
+    } else {
+      helper('form');
+      $accounts = new AccountModel();
+      $batch    = new BatchModel();
+      $search = [
+        'fname' => esc($this->request->getPost('s')),
+        'lname' => esc($this->request->getPost('s'))
+      ];
+
+      $data = [
+        'accounts' => $accounts->searchUserRequest($search)->paginate(15),
+        'a_batch'  => $batch->findAll(),
+        'pager'    => $accounts->pager
+      ];
+
+      session()->setTempData('info', 'The System has found '.count($data['alumni']).' data!', 1);
+      echo view('templates/header', $data);
+      echo view('templates/topnavbar');
+      echo view('templates/sidenavbar');
+      echo view('Request/index');
+      echo view('templates/footer');
+    }
   }
 }

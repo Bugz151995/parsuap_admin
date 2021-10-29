@@ -66,6 +66,36 @@
 				</div>
 			</div>
 		</div>
+		
+		<!-- PAGINATION -->
+		<div class="row justify-content-between">
+			<div class="col-auto">
+				<?php //$pager->links() ?>
+			</div>
+			<div class="col-auto pb-3">
+				<div class="d-flex">
+					<a href="<?= site_url()?>request" class="btn pb-0 btn-focus rounded-pill px-3 mr-3">
+						<span class="align-middle">
+							<i class="fa fa-fw" aria-hidden="true"></i>
+							Refresh List
+						</span>
+					</a>
+					<?= form_open('request/s') ?>
+					<?= csrf_field() ?>
+					<div class="input-group rounded-pill bg-white shadow-sm">
+						<input placeholder="Search Name..." name="s" type="text" class="form-control rounded-pill border-0 px-4">
+						<span class="input-group-text rounded-pill border-0 bg-primary">
+							<button type="submit" class="btn p-0 text-light">
+							<i class="fas fa-search"></i>
+							</button>
+						</span>
+					</div>
+					<?= form_close() ?>
+				</div>
+			</div>
+		</div>
+
+		<!-- TABLE -->
 		<div class="row">
 			<div class="col-md-12">
 				<div class="main-card mb-3 card">

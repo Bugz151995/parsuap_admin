@@ -67,9 +67,30 @@
 			</div>
 		</div>
 		<!-- PAGINATION -->
-		<div class="row">
+		<div class="row justify-content-between">
 			<div class="col-auto">
 				<?= $pager->links() ?>
+			</div>
+			<div class="col-auto pb-3">
+				<div class="d-flex">
+					<a href="<?= site_url()?>users" class="btn pb-0 btn-focus rounded-pill px-3 mr-3">
+						<span class="align-middle">
+							<i class="fa fa-fw" aria-hidden="true"></i>
+							Refresh List
+						</span>
+					</a>
+					<?= form_open('users/s') ?>
+					<?= csrf_field() ?>
+					<div class="input-group rounded-pill bg-white shadow-sm">
+						<input placeholder="Search Name..." name="s" type="text" class="form-control rounded-pill border-0 px-4">
+						<span class="input-group-text rounded-pill border-0 bg-primary">
+							<button type="submit" class="btn p-0 text-light">
+							<i class="fas fa-search"></i>
+							</button>
+						</span>
+					</div>
+					<?= form_close() ?>
+				</div>
 			</div>
 		</div>
 
@@ -85,7 +106,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="table">
+					<div class="table-responsive">
 						<table class="align-middle mb-0 table table-borderless table-striped table-hover">
 							<thead>
 								<tr>
@@ -98,97 +119,99 @@
 								</tr>
 							</thead>
 							<tbody>
-								<?php if(count($alumni) > 0): ?>
-								<?php foreach($alumni as $key => $a): ?>
-									<tr>
-										<td class="text-center text-muted">#<?= $a['alumni_id'] ?></td>
+								<?php if (count($alumni) > 0) : ?>
+									<?php foreach ($alumni as $key => $a) : ?>
+										<tr>
+											<td class="text-center text-muted">#<?= $a['alumni_id'] ?></td>
 
-										<td>
-											<div class="widget-content p-0">
-												<div class="widget-content-wrapper">
-													<div class="widget-content-left mr-3">
-														<div class="widget-content-left">
-															<img width="40" class="rounded-circle" src="<?= site_url()?>assets/images/avatars/4.jpg" alt="">
+											<td>
+												<div class="widget-content p-0">
+													<div class="widget-content-wrapper">
+														<div class="widget-content-left mr-3">
+															<div class="widget-content-left">
+																<img width="40" class="rounded-circle" src="<?= site_url() ?>assets/images/avatars/4.jpg" alt="">
+															</div>
+														</div>
+														<div class="widget-content-left flex2">
+															<div class="widget-heading"><?= $a['fname'] . ' ' . $a['lname'] ?></div>
+															<div class="widget-subheading opacity-7"><?= $a['email'] ?></div>
 														</div>
 													</div>
-													<div class="widget-content-left flex2">
-														<div class="widget-heading"><?= $a['fname'].' '.$a['lname'] ?></div>
-														<div class="widget-subheading opacity-7"><?= $a['email'] ?></div>
-													</div>
 												</div>
-											</div>
-										</td>
+											</td>
 
-										<td class="text-center">										
-											<?php if($a['batch_type'] == 'college'): ?>
-												<div class="badge badge-info">College</div>
-											<?php elseif($a['batch_type'] == 'high_school'): ?>
-												<div class="badge badge-alternate">High School</div>
-											<?php else: ?>
-												<div class="badge badge-focus">Both</div>
-											<?php endif ?>
-										</td>
+											<td class="text-center">
+												<?php if ($a['batch_type'] == 'college') : ?>
+													<div class="badge badge-info">College</div>
+												<?php elseif ($a['batch_type'] == 'high_school') : ?>
+													<div class="badge badge-alternate">High School</div>
+												<?php else : ?>
+													<div class="badge badge-focus">Both</div>
+												<?php endif ?>
+											</td>
 
-										<td class="text-center">
-											<?php foreach($a_batch as $key => $batch): ?>
-												<?php if($batch['alumni_id'] == $a['alumni_id']): ?>
+											<td class="text-center">
+												<?php foreach ($a_batch as $key => $batch) : ?>
+													<?php if ($batch['alumni_id'] == $a['alumni_id']) : ?>
 														<button class="btn-transition btn btn-outline-light">
-														<?= $batch['batch_year']?>
+															<?= $batch['batch_year'] ?>
 														</button>
-												<?php endif?>
-											<?php endforeach ?>
-										</td>
+													<?php endif ?>
+												<?php endforeach ?>
+											</td>
 
-										<td class="text-center">
-											<?php if($a['status'] == 0): ?>
-												<div class="badge badge-warning">Pending</div>
-											<?php elseif($a['status'] == 2): ?>
-												<div class="badge badge-dark">Blocked</div>
-											<?php else: ?>
-												<div class="badge badge-success">Approved</div>
-											<?php endif ?>
-										</td>
+											<td class="text-center">
+												<?php if ($a['status'] == 0) : ?>
+													<div class="badge badge-warning">Pending</div>
+												<?php elseif ($a['status'] == 2) : ?>
+													<div class="badge badge-dark">Blocked</div>
+												<?php else : ?>
+													<div class="badge badge-success">Approved</div>
+												<?php endif ?>
+											</td>
 
-										<td class="text-center">
-											<div class="dropleft btn-group">
-												<button type="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" class="dropdown-toggle-split dropdown-toggle btn btn-sm btn-primary"><span class="sr-only">Toggle Dropdown</span></button>
-												<div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu p-0">
-													<?= form_open('users/confirm', ['class' => 'dropdown-item p-0']) ?>
-													<?= csrf_field() ?>
-													<?= form_hidden('a', esc($a['account_id'])) ?>
-													<?= form_hidden('e', esc($a['email'])) ?>
-													<?= form_hidden('action', 'approve') ?>
+											<td class="text-center">
+												<div class="dropup btn-group">
+													<button type="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" class="dropdown-toggle-split dropdown-toggle btn btn-sm btn-primary"><span class="sr-only">Toggle Dropdown</span></button>
+													<div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu p-0">
+														<?= form_open('users/confirm', ['class' => 'dropdown-item p-0']) ?>
+														<?= csrf_field() ?>
+														<?= form_hidden('a', esc($a['account_id'])) ?>
+														<?= form_hidden('e', esc($a['email'])) ?>
+														<?= form_hidden('action', 'approve') ?>
 														<button type="submit" tabindex="0" class="btn-transition btn w-100 btn-outline-success rounded-0 border-0">
 															<i class="pe-7s-check mr-2"></i> Approve
 														</button>
-													<?= form_close() ?>
-													
-													<?= form_open('users/confirm', ['class' => 'dropdown-item p-0']) ?>
-													<?= csrf_field() ?>
-													<?= form_hidden('a', esc($a['account_id'])) ?>
-													<?= form_hidden('e', esc($a['email'])) ?>
-													<?= form_hidden('action', 'block') ?>
+														<?= form_close() ?>
+
+														<?= form_open('users/confirm', ['class' => 'dropdown-item p-0']) ?>
+														<?= csrf_field() ?>
+														<?= form_hidden('a', esc($a['account_id'])) ?>
+														<?= form_hidden('e', esc($a['email'])) ?>
+														<?= form_hidden('action', 'block') ?>
 														<button type="submit" tabindex="0" class="btn-transition btn w-100 btn-outline-dark rounded-0 border-0">
 															<i class="pe-7s-delete-user mr-2"></i> Block
 														</button>
-													<?= form_close() ?>
+														<?= form_close() ?>
 
-													<?= form_open('users/confirm', ['class' => 'dropdown-item p-0']) ?>
-													<?= csrf_field() ?>
-													<?= form_hidden('a', esc($a['alumni_id'])) ?>
-													<?= form_hidden('action', 'delete') ?>
+														<?= form_open('users/confirm', ['class' => 'dropdown-item p-0']) ?>
+														<?= csrf_field() ?>
+														<?= form_hidden('a', esc($a['alumni_id'])) ?>
+														<?= form_hidden('action', 'delete') ?>
 														<button type="submit" tabindex="0" class="btn-transition btn w-100 btn-outline-danger rounded-0 border-0">
 															<i class="pe-7s-trash mr-2"></i> Delete
 														</button>
-													<?= form_close() ?>
+														<?= form_close() ?>
+													</div>
 												</div>
-											</div>
-										</td>
-									</tr>
-								<?php endforeach ?>
-								<?php else: ?>
+											</td>
+										</tr>
+									<?php endforeach ?>
+								<?php else : ?>
 									<tr>
-										<td colspan="7" class="pt-4 px-5"><div class="alert alert-danger"><strong><i class="fas fa-exclamation-triangle mr-2"></i>Oops!</strong> There are no User Request Found.</div></td>
+										<td colspan="7" class="pt-4 px-5">
+											<div class="alert alert-danger"><strong><i class="fas fa-exclamation-triangle mr-2"></i>Oops!</strong> There are no User Found.</div>
+										</td>
 									</tr>
 								<?php endif ?>
 							</tbody>

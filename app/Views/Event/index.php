@@ -67,6 +67,26 @@
 			</div>
 		</div>
 
+		<!-- PAGINATION -->
+		<div class="row justify-content-between">
+			<div class="col-auto">
+				<button class="btn btn-primary rounded-pill"><i class="fas fa-plus-circle mr-2"></i>Create Event</button>
+			</div>
+			<div class="col-auto pb-3">
+				<?= form_open('request/s') ?>
+				<?= csrf_field() ?>
+				<div class="input-group rounded-pill bg-white shadow-sm">
+					<input placeholder="Search Event..." name="s" type="text" class="form-control rounded-pill border-0 px-4">
+					<span class="input-group-text rounded-pill border-0 bg-primary">
+						<button type="submit" class="btn p-0 text-light">
+							<i class="fas fa-search"></i>
+						</button>
+					</span>
+				</div>
+				<?= form_close() ?>
+			</div>
+		</div>
+
 		<div class="main-card mb-3 card">
 			<div class="card-body">
 				<div id="calendar" class="fc fc-bootstrap4 fc-ltr">

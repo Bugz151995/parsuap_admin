@@ -67,10 +67,39 @@
 			</div>
 		</div>
 
+		<!-- PAGINATION -->
+		<div class="row justify-content-between">
+			<div class="col-auto">
+				<?= $pager->links() ?>
+			</div>
+			<div class="col-auto pb-3">
+				<div class="d-flex">
+					<a href="<?= site_url()?>threads" class="btn pb-0 btn-focus rounded-pill px-3 mr-3">
+						<span class="align-middle">
+							<i class="fa fa-fw" aria-hidden="true"></i>
+							Refresh List
+						</span>
+					</a>
+					<?= form_open('threads/s') ?>
+					<?= csrf_field() ?>
+					<div class="input-group rounded-pill bg-white shadow-sm">
+						<input placeholder="Search Title..." name="s" type="text" class="form-control rounded-pill border-0 px-4">
+						<span class="input-group-text rounded-pill border-0 bg-primary">
+							<button type="submit" class="btn p-0 text-light">
+							<i class="fas fa-search"></i>
+							</button>
+						</span>
+					</div>
+					<?= form_close() ?>
+				</div>
+			</div>
+		</div>
+
+		<!-- TABLE -->
 		<div class="row">
 			<div class="col-md-12">
 				<div class="main-card mb-3 card">
-					<div class="card-header">Forum Threads
+					<div class="card-header">FORUM THREADS
 						<div class="btn-actions-pane-right">
 							<div role="group" class="btn-group-sm btn-group">
 								<button class="active btn btn-focus">Last Week</button>
@@ -83,120 +112,90 @@
 							<thead>
 								<tr>
 									<th class="text-center">#</th>
-									<th>Name</th>
-									<th class="text-center">City</th>
+									<th>Title</th>
+									<th class="text-center">Created @</th>
+									<th class="text-center">Posts</th>
 									<th class="text-center">Status</th>
 									<th class="text-center">Actions</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td class="text-center text-muted">#345</td>
-									<td>
-										<div class="widget-content p-0">
-											<div class="widget-content-wrapper">
-												<div class="widget-content-left mr-3">
-													<div class="widget-content-left">
-														<img width="40" class="rounded-circle" src="assets/images/avatars/4.jpg" alt="">
-													</div>
-												</div>
-												<div class="widget-content-left flex2">
-													<div class="widget-heading">John Doe</div>
-													<div class="widget-subheading opacity-7">Web Developer</div>
-												</div>
-											</div>
-										</div>
-									</td>
-									<td class="text-center">Madrid</td>
-									<td class="text-center">
-										<div class="badge badge-warning">Pending</div>
-									</td>
-									<td class="text-center">
-										<button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">Details</button>
-									</td>
-								</tr>
+								<?php if (count($threads) > 0) : ?>
+									<?php foreach ($threads as $key => $t) : ?>
+										<tr>
+											<td class="text-center text-muted">#<?= $t['forum_thread_id'] ?></td>
 
-								<tr>
-									<td class="text-center text-muted">#347</td>
-									<td>
-										<div class="widget-content p-0">
-											<div class="widget-content-wrapper">
-												<div class="widget-content-left mr-3">
-													<div class="widget-content-left">
-														<img width="40" class="rounded-circle" src="assets/images/avatars/3.jpg" alt="">
+											<td>
+												<div class="widget-content p-0">
+													<div class="widget-content-wrapper">
+														<div class="widget-content-left flex2">
+															<div class="widget-heading"><?= $t['topic'] ?></div>
+															<div class="widget-subheading opacity-7">By: <?= $t['fname'] . ' ' . $t['lname'] ?></div>
+														</div>
 													</div>
 												</div>
-												<div class="widget-content-left flex2">
-													<div class="widget-heading">Ruben Tillman</div>
-													<div class="widget-subheading opacity-7">Etiam sit amet orci eget</div>
-												</div>
-											</div>
-										</div>
-									</td>
-									<td class="text-center">Berlin</td>
-									<td class="text-center">
-										<div class="badge badge-success">Completed</div>
-									</td>
-									<td class="text-center">
-										<button type="button" id="PopoverCustomT-2" class="btn btn-primary btn-sm">Details</button>
-									</td>
-								</tr>
+											</td>
 
-								<tr>
-									<td class="text-center text-muted">#321</td>
-									<td>
-										<div class="widget-content p-0">
-											<div class="widget-content-wrapper">
-												<div class="widget-content-left mr-3">
-													<div class="widget-content-left">
-														<img width="40" class="rounded-circle" src="assets/images/avatars/2.jpg" alt="">
-													</div>
-												</div>
-												<div class="widget-content-left flex2">
-													<div class="widget-heading">Elliot Huber</div>
-													<div class="widget-subheading opacity-7">Lorem ipsum dolor sic</div>
-												</div>
-											</div>
-										</div>
-									</td>
-									<td class="text-center">London</td>
-									<td class="text-center">
-										<div class="badge badge-danger">In Progress</div>
-									</td>
-									<td class="text-center">
-										<button type="button" id="PopoverCustomT-3" class="btn btn-primary btn-sm">Details</button>
-									</td>
-								</tr>
+											<td class="text-center">
+												<?= $t['created_at'] ?>
+											</td>
 
-								<tr>
-									<td class="text-center text-muted">#55</td>
-									<td>
-										<div class="widget-content p-0">
-											<div class="widget-content-wrapper">
-												<div class="widget-content-left mr-3">
-													<div class="widget-content-left">
-														<img width="40" class="rounded-circle" src="assets/images/avatars/1.jpg" alt="">
+											<td class="text-center">
+												<?= $t['posts'] ?>
+											</td>
+
+											<td class="text-center">
+												<?php if ($t['status'] == '1') : ?>
+													<div class="badge badge-focus">Closed</div>
+												<?php else : ?>
+													<div class="badge badge-success">Open</div>
+												<?php endif ?>
+											</td>
+
+											<td class="text-center">
+												<div class="dropup btn-group">
+													<button type="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" class="dropdown-toggle-split dropdown-toggle btn btn-sm btn-primary"><span class="sr-only">Toggle Dropdown</span></button>
+													<div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu p-0">
+														<?= form_open('threads/v', ['class' => 'dropdown-item p-0']) ?>
+														<?= csrf_field() ?>
+														<?= form_hidden('t', esc($t['forum_thread_id'])) ?>
+														<button type="submit" tabindex="0" class="btn-transition btn w-100 btn-outline-primary rounded-0 border-0">
+															<i class="pe-7s-look mr-2"></i> View
+														</button>
+														<?= form_close() ?>
+
+														<?= form_open('threads/confirm', ['class' => 'dropdown-item p-0']) ?>
+														<?= csrf_field() ?>
+														<?= form_hidden('t', esc($t['forum_thread_id'])) ?>
+														<?= form_hidden('action', 'close') ?>
+														<button type="submit" tabindex="0" class="btn-transition btn w-100 btn-outline-dark rounded-0 border-0">
+															<i class="pe-7s-delete-user mr-2"></i> Close
+														</button>
+														<?= form_close() ?>
+
+														<?= form_open('threads/confirm', ['class' => 'dropdown-item p-0']) ?>
+														<?= csrf_field() ?>
+														<?= form_hidden('a', esc($t['forum_thread_id'])) ?>
+														<?= form_hidden('action', 'delete') ?>
+														<button type="submit" tabindex="0" class="btn-transition btn w-100 btn-outline-danger rounded-0 border-0">
+															<i class="pe-7s-trash mr-2"></i> Delete
+														</button>
+														<?= form_close() ?>
 													</div>
 												</div>
-												<div class="widget-content-left flex2">
-													<div class="widget-heading">Vinnie Wagstaff</div>
-													<div class="widget-subheading opacity-7">UI Designer</div>
-												</div>
-											</div>
-										</div>
-									</td>
-									<td class="text-center">Amsterdam</td>
-									<td class="text-center">
-										<div class="badge badge-info">On Hold</div>
-									</td>
-									<td class="text-center">
-										<button type="button" id="PopoverCustomT-4" class="btn btn-primary btn-sm">Details</button>
-									</td>
-								</tr>
+											</td>
+										</tr>
+									<?php endforeach ?>
+								<?php else : ?>
+									<tr>
+										<td colspan="7" class="pt-4 px-5">
+											<div class="alert alert-danger"><strong><i class="fas fa-exclamation-triangle mr-2"></i>Oops!</strong> There are no User Found.</div>
+										</td>
+									</tr>
+								<?php endif ?>
 							</tbody>
 						</table>
 					</div>
-
 					<div class="d-block text-center card-footer">
 						<button class="mr-2 btn-icon btn-icon-only btn btn-outline-danger"><i class="pe-7s-trash btn-icon-wrapper"> </i></button>
 						<button class="btn-wide btn btn-success">Save</button>
