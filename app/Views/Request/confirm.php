@@ -6,12 +6,12 @@
         <h5 class="modal-title" id="staticBackdropLabel">
           Confirm Action
         </h5>
-        <a href="<?= site_url()?>users" role="button" class="close">
+        <a href="<?= site_url()?>request" role="button" class="close">
           <span aria-hidden="true">&times;</span>
         </a>
       </div>
       <div class="modal-body rounded-bottom alert-<?= $state?>">
-        <?= form_open('users/'.$action) ?>
+        <?= form_open('request/'.$action) ?>
         <?= csrf_field() ?>
         <?= form_hidden('a', esc($alumni_id)) ?>
 
@@ -21,7 +21,7 @@
 
         Are you sure that you want to <?= $action ?> this User?
         <div class="d-flex justify-content-center mt-4">
-          <a href="<?= site_url()?>users" role="button" class="btn btn-secondary mr-3">Cancel</a>
+          <a href="<?= site_url()?>request" role="button" class="btn btn-secondary mr-3">Cancel</a>
           <button type="submit" class="btn btn-primary">Confirm</button>
         </div>
         <?= form_close() ?>

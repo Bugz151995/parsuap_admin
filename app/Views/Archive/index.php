@@ -66,6 +66,8 @@
 				</div>
 			</div>
 		</div>
+
+		<!-- TABLE -->
 		<div class="row">
 			<div class="col-md-12">
 				<div class="main-card mb-3 card">
@@ -82,8 +84,8 @@
 							<thead>
 								<tr>
 									<th class="text-center">#</th>
-									<th>Name</th>
-									<th class="text-center">City</th>
+									<th>Title</th>
+									<th class="text-center">Published @</th>
 									<th class="text-center">Status</th>
 									<th class="text-center">Actions</th>
 								</tr>
